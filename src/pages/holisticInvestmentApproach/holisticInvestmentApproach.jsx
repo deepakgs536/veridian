@@ -3,6 +3,7 @@ import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import InvestmentApproachCard from '../../components/investmentApproachCard';
 import FocusAndStrategyImage from '../../assets/focusAndStrategyImage.jpg';
 import PortfolioImage from '../../assets/portfolioImage.jpg';
+import CorporateSocialResponsibility from '../../assets/corporateSocialResponsibility.jpg';
 
 function HolisticInvestmentApproach() {
   const theme = useTheme();
@@ -20,7 +21,7 @@ function HolisticInvestmentApproach() {
       ParaTwo: 'Powering up new possibilities of play through one single API, Pragmatic Play offers a multi-product portfolio of award-winning slots, live casino, bingo, virtual sports, sportsbook and more, available in all major regulated markets, languages and currencies. Driven by persistence to craft immersive experiences and responsible thrills, Pragmatic Play’s professional team consistently delivers best-in-class services to its partners worldwide with a dedication to creating games that players love time and time again.'
     },
     {
-      Image: PortfolioImage,
+      Image: CorporateSocialResponsibility,
       Header: 'Corporate social responsibility',
       ParaOne: 'Veridian supports responsible investing and evaluates environmental, social and governance issues in its investments. Veridian believes that responsible investing and return on investment go together, and consideration of ESG issues improves portfolio company performance and investment results.',
       ParaTwo: ''

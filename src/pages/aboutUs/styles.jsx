@@ -1,7 +1,14 @@
-export const Styles = {
+import { useTheme } from '@mui/material/styles';
+
+const useStyles = () => {
+  const theme = useTheme(); // Access the custom theme
+
+  return {
     textStyle: {
       fontSize: '14px',
       textAlign: 'start',
+      color:theme.palette.text.secondary,
+      fontFamily:theme.typography.fontFamilySecondary,
     },
     gridStyle: {
       display: 'grid',
@@ -11,6 +18,10 @@ export const Styles = {
       '@media (max-width: 600px)': {
         gridTemplateColumns: '1fr', // 1 element per row on small screens
       },
+      
     },
   };
-  
+};
+
+export default useStyles;
+

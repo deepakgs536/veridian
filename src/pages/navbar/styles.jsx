@@ -1,7 +1,7 @@
 const Styles = {
     mainContainer : {
         width: '98.8vw',  // Width 98.8% of the viewport width
-        paddingX: '3%',  // Horizontal padding
+        paddingX: '5%',  // Horizontal padding
         display:'flex',
         flexDirection: 'column', // Arrange children vertically
         alignItems: 'center', // Center content horizontally
@@ -9,9 +9,9 @@ const Styles = {
         backgroundColor:'#FFFFFF',
         color:'#000000'
       },
-      contentSection : { 
+    contentSection : { 
         width: '100%',
-        alignSelf:'center',
+        alignSelf:'center',         
         maxWidth: '1440px',  
     },
     logoStyle : { 
@@ -25,6 +25,7 @@ const Styles = {
     },
     headerStyle : {
         fontSize:{xs:'26px',md:'32px'},
+        fontWeight:'600',
         paddingBottom:{xs:'5px',md:'15px'},
         paddingTop:{xs:'10px',md:'20px'}
     }

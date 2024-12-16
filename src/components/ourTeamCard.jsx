@@ -102,6 +102,7 @@ function OurTeamCard({ TeamMemberName, Info1 , Info2, Image, Designation,paraRef
               color: theme.palette.background.white,
               fontSize:'14px',
               textAlign: 'left', // Explicitly left-align text
+              fontFamily:theme.typography.fontFamilySecondary,
             }}
           >
             {Designation}
@@ -121,6 +122,7 @@ function OurTeamCard({ TeamMemberName, Info1 , Info2, Image, Designation,paraRef
           width: {xs:'100%',md:'70%'},
           marginLeft:{md:'22%'},
           marginTop: '10px',
+          color:theme.palette.text.tertiary,
           transform: {
             xs: 'skew(0deg)',
             md: 'skew(20deg)',
@@ -128,8 +130,8 @@ function OurTeamCard({ TeamMemberName, Info1 , Info2, Image, Designation,paraRef
           height: maxHeight ? `${maxHeight}px` : 'auto', // Apply the max height
         }}
       >
-        <Typography sx={{ marginBottom: '8px',fontSize:{xs:'14px',md:'16px'} }}>{Info1}</Typography>
-        {Info2 && <Typography sx={{fontSize:{xs:'14px',md:'16px'}}}>{Info2}</Typography>}
+        <Typography sx={{ marginBottom: '8px',fontSize:{xs:'14px',md:'16px'},fontFamily:theme.typography.fontFamilySecondary, }}>{Info1}</Typography>
+        {Info2 && <Typography sx={{fontSize:{xs:'14px',md:'16px'},fontFamily:theme.typography.fontFamilySecondary,}}>{Info2}</Typography>}
       </Box>
     </Box>
   );

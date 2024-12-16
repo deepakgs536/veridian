@@ -26,12 +26,12 @@ function InvestmentApproachCard({ InvestmentImage, Header, ParaOne = '', ParaTwo
             </Typography>
 
             {/* Paragraphs */}
-            <Stack spacing={1}>
-                <Typography sx={{ fontSize: '14px', lineHeight: '1.6' }}>
+            <Stack spacing={1} sx={{color:theme.palette.text.secondary }}>
+                <Typography sx={{ fontSize: '14px', lineHeight: '1.6' ,fontFamily:theme.typography.fontFamilySecondary}}>
                     {ParaOne}
                 </Typography>
                 {ParaTwo && (
-                    <Typography sx={{ fontSize: '14px', lineHeight: '1.6' }}>
+                    <Typography sx={{ fontSize: '14px', lineHeight: '1.6' ,fontFamily:theme.typography.fontFamilySecondary}}>
                         {ParaTwo}
                     </Typography>
                 )}

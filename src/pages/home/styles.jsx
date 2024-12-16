@@ -1,9 +1,15 @@
-import zIndex from "@mui/material/styles/zIndex";
+import { useTheme } from '@mui/material/styles';
 
-export const Styles = {
+const useStyles = () => {
+  const theme = useTheme(); // Access the custom theme
+
+  return {
     company: {
         color: '#FFFFFF',
         fontSize: '12px',
+        fontFamily: theme.typography.fontFamilySecondary,
+        letterSpacing: '0.1em', 
+        alignItems:'center',
         backgroundColor: '#f9c300', // Corrected property name
         paddingX:'5px',
         '@media (max-width: 600px)': { // Styles for mobile view
@@ -22,12 +28,12 @@ export const Styles = {
         backgroundColor: "transparent", // Ensures the background remains transparent
         textAlign: "center",
         height:'50vh',
-        maxHeight:{xs:'300px',md:'540px'},
+        maxHeight:{xs:'300px',md:'550px'},
         paddingX:'5%',
       },
       quotes : {
-        fontFamily: "DM Sans, sans-serif",
-            fontWeight: 400,
+            fontFamily: theme.typography.fontFamily,
+            fontWeight: 600,
             fontSize: {xs:"32px",md:"48px"},
             lineHeight: "28px",
             color: "#FFFFFF", // Neutral color for supporting text
@@ -41,7 +47,7 @@ export const Styles = {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#006547",
-        padding: "12px 20px",
+        padding: "16px 24px",
         borderRadius: "4px",
         cursor: "pointer",
         color:'#FFFFFF',
@@ -53,6 +59,14 @@ export const Styles = {
             fontSize: "18px", // Smaller font for mobile screens
             padding:'6px 15px',
         },
+      },
+      knowMoreText:{
+        fontFamily: theme.typography.fontFamilySecondary,
+        fontWeight:'600',
       }
-
+  
+  };
 };
+
+export default useStyles;
+

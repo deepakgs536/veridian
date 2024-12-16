@@ -1,13 +1,13 @@
 import { Box, Stack, Typography } from '@mui/material';
 import React from 'react';
 import VeridianImage from '../../assets/veritianImage.jpg';
-import { Styles } from './styles';
 import AboutUsDetails from '../../components/aboutUsDetails';
 import ExcellenceIcon from '../../assets/excellenceIcon.jpg';
 import InitiativeIcon from '../../assets/initiativeIcon.jpg';
 import IntegrityIcon from '../../assets/integrityIcon.jpg';
 import SustainabilityIcon from '../../assets/sustainabilityIcon.jpg';
 import { useTheme } from '@emotion/react';
+import useStyles from './styles';
 
 function AboutUs() {
   const aboutUsInfo = [
@@ -38,6 +38,7 @@ function AboutUs() {
   ];
 
   const theme = useTheme();
+  const Styles = useStyles();
 
   return (
     <Stack direction="column" sx={{ width: '100%', margin: 'auto' }}>

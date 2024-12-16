@@ -54,6 +54,7 @@ function HolisticInvestmentApproach() {
           gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' }, // 1 column for xs and 3 columns for md+
           gap: '20px',
           width: '100%',
+          paddingBottom:'3%',
         }}
       >
         {currentItems.map((detail, index) => (

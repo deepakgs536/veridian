@@ -5,15 +5,15 @@ import { useTheme } from '@emotion/react';
 function AboutUsDetails({ aboutUsIcon = null, aboutUsMessage = "", header = "" }) {
   const theme = useTheme();
   return (
-    <Stack direction={{ xs: 'column', md: 'row' }} spacing={1.5} sx={{backgroundColor:theme.palette.background.white ,padding:{xs:'5%',md:'3%'},zIndex:10}}>
+    <Stack direction={{ xs: 'column', md: 'row' }} spacing={1.5} sx={{backgroundColor:theme.palette.background.white,color:theme.palette.text.secondary ,padding:{xs:'5%',md:'3%'},zIndex:10}}>
       {/* Text Section */}
       <Stack sx={{ 
           order: { xs: 1, md: 0 } // Image comes first in xs (top), second in md (bottom)
         }}>
-        <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start', marginBottom: '5px' }}>
+        <Typography sx={{ fontSize: '18px', fontWeight: 550, textAlign: 'start', marginBottom: '5px',color:theme.palette.background.black,}}>
           {header}
         </Typography>
-        <Typography sx={{ fontSize: '14px', textAlign: 'start' }}>
+        <Typography sx={{ fontSize: '14px', textAlign: 'start', fontFamily:theme.typography.fontFamilySecondary, }}>
           {aboutUsMessage}
         </Typography>
       </Stack>

@@ -19,8 +19,8 @@ function ContactUs() {
       }}
     >
       <Box sx={{ zIndex: 100}}>
-        <Typography sx={{ marginBottom: '8px',fontSize:'32px' }}>Contact Us</Typography>
-        <Typography sx={{ marginBottom: '16px',fontSize:'14px' }}>
+        <Typography sx={{ marginBottom: '8px',fontSize:'32px',fontWeight:'600' }}>Contact Us</Typography>
+        <Typography sx={{ marginBottom: '16px',fontSize:'14px',fontFamily:theme.typography.fontFamilySecondary, }}>
           Have questions or need more information? Reach out to us at.
         </Typography>
         <a
@@ -41,6 +41,8 @@ function ContactUs() {
                 padding: {xs:'2% 2%',md:'10px 20px'},
                 alignItems: 'center', // Center items vertically
                 cursor: 'pointer', // Change cursor to pointer on hover
+                fontFamily:theme.typography.fontFamilySecondary,
+                fontWeight:'600',
               }}
             >
               <Box
@@ -52,11 +54,12 @@ function ContactUs() {
                   display: 'flex', // Add flex to align text
                   alignItems: 'center', // Center vertically
                   justifyContent: 'center', // Center horizontally
+                  
                 }}
               >
                 MAIL TO
               </Box>
-              <Typography sx={{ display: 'flex', alignItems: 'center',fontSize:{xs:'16px',md:'18px'} }}>
+              <Typography sx={{ display: 'flex', alignItems: 'center',fontSize:{xs:'16px',md:'18px'},fontWeight:'600',fontFamily:theme.typography.fontFamilySecondary }}>
                 info@veridian.com
               </Typography>
             </Stack>
@@ -82,15 +85,15 @@ function ContactUs() {
           </Box>
         </Stack>
         </a>
-        <Typography sx={{ marginTop: '16px',fontSize:'14px' }}>We're here to help</Typography>
+        <Typography sx={{ marginTop: '16px',fontSize:'14px',fontFamily:theme.typography.fontFamilySecondary, }}>We're here to help</Typography>
       </Box>
       <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-        <ContactUsShadow top="0%" right="-75%" opacity="0.4" />
-        <ContactUsShadow top="25%" right="-82%" opacity="0.7" />
-        <ContactUsShadow top="50%" right="-89%" opacity="1" />
-        <ContactUsShadow bottom="0%" left="-75%" opacity="0.4" />
-        <ContactUsShadow bottom="25%" left="-82%" opacity="0.7" />
-        <ContactUsShadow bottom="50%" left="-89%" opacity="1" />
+        <ContactUsShadow top="0%" right="-68%" opacity="0.2" />
+        <ContactUsShadow top="25%" right="-76%" opacity="0.2" />
+        <ContactUsShadow top="50%" right="-84%" opacity="0.1" />
+        <ContactUsShadow bottom="0%" left="-68%" opacity="0.2" />
+        <ContactUsShadow bottom="25%" left="-76%" opacity="0.2" />
+        <ContactUsShadow bottom="50%" left="-84%" opacity="0.1" />
       </Box>
 
 

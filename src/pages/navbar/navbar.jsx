@@ -17,25 +17,43 @@
   import Footer from '../footer/footer';
   import { useTheme } from '@emotion/react';
   import Styles from './styles';
+  import { useLocation, useNavigate } from 'react-router-dom';
 
 
   function Navbar() {
     const theme = useTheme();
-    const [currentTab, setCurrentTab] = React.useState('home');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [currentTab, setCurrentTab] = React.useState('');
     const [drawerOpen, setDrawerOpen] = React.useState(false);
 
     const handleChange = (event, newValue) => {
       setCurrentTab(newValue);
-
-      // Smooth scroll to the section with the same ID as the value
-      const section = document.getElementById(newValue);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      // Close the drawer after selection (for mobile view)
-      setDrawerOpen(false);
+      navigate(`#${newValue}`); // Update the URL with the section ID
+      scrollToSection(newValue); // Smooth scroll to the section
+      setDrawerOpen(false); // Close the drawer for mobile view
     };
+  
+    // To scroll to a section
+    const scrollToSection = (sectionId) => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const offset = -100; // Adjust this value as needed
+        const sectionPosition = section.getBoundingClientRect().top + window.scrollY + offset;
+        window.scrollTo({
+          top: sectionPosition,
+          behavior: 'smooth',
+        });
+      }
+    };
+    // UseEffect to scroll on URL change
+    React.useEffect(() => {
+      if (location.hash) {
+        const sectionId = location.hash.substring(1); // Remove '#' from hash
+        scrollToSection(sectionId);
+        setCurrentTab(sectionId); // Highlight the active tab
+      }
+    }, [location]);
 
     const toggleDrawer = (open) => () => {
       setDrawerOpen(open);
@@ -78,7 +96,8 @@
                     justifyContent: 'center',
                     '& .MuiTab-root': {
                       outline: 'none',
-                      fontSize: '18px',
+                      fontSize: '20px',
+                      fontWeight:500,
                       paddingX: '15px',
                       textTransform: 'none',
                     },
@@ -169,6 +188,7 @@
                     textAlign: 'center',
                     padding: '12px 24px',
                     fontSize: '18px',
+                    fontWeight:500,
                     textTransform: 'none',
                     justifyContent: 'center',
                   },
@@ -194,9 +214,12 @@
               sx={{
                 position: 'relative',
                 width: '100%',
-                height: { xs: '60vh', md: 'auto' },
-                backgroundColor: theme.palette.primary.main,
+                height: { xs: '60vh', md: '60vh' },
+                backgroundColor: theme.palette.primary.main, 
                 overflow: 'hidden',
+                marginY:{xs:'0',md:'auto'},
+                display:'flex',
+                alignItems:'center',
               }}
             >
               <Shadow top={-50} left={0} />
@@ -214,15 +237,15 @@
               <Shadow bottom={'20%'} right={0} shadowRotate={'rotate(135deg)'} shadowColor ={alpha('#C0E3DB', 1)} fadeColor = {alpha('#C0E3DB', 0)}/>
               <Shadow top={'-15%'} right={0} shadowRotate={'rotate(135deg)'} shadowColor ={alpha('#C0E3DB', 1)} fadeColor = {alpha('#C0E3DB', 0)}/>
               <Shadow bottom={'20%'} left={0} shadowRotate={'rotate(225deg)'} shadowColor ={alpha('#C0E3DB', 1)} fadeColor = {alpha('#C0E3DB', 0)}/>
-              <Box id="aboutUs" sx={{paddingX:{xs:'4%',md:'5%'}}}>
+              <Box id="aboutUs" sx={{paddingX:{xs:'4%',md:'8%'}}}>
               <Typography sx={Styles.headerStyle}>About Us</Typography>
-                <AboutUs />
+              <AboutUs />
               </Box>
             <Stack id="ourTeam" >
               <Typography sx={Styles.headerStyle}>Our Team</Typography>
               <OurTeam />
             </Stack>
-            <Box id="investmentApproach" sx={{ paddingBottom: '20px',px:{xs:2,md:3} }}>
+            <Box id="investmentApproach" sx={{ paddingBottom: '20px',px:{xs:2,md:5} }}>
             <Typography sx={Styles.headerStyle}>Holistic Investment Approach</Typography>
               <HolisticInvestmentApproach />
             </Box>
@@ -232,7 +255,7 @@
           </Box>
           <Divider 
           sx={{
-            paddingY:'10px',width:'100%'
+            paddingY:'10px',width:'100%',marginY:'20px',
             }}/>
           <Box>
           <Footer/>

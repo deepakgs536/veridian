@@ -19,13 +19,14 @@ function Footer() {
         justifyContent: { xs: 'flex-start', md: 'space-between' }, // Start alignment for xs, space-between for md
       }}
     >
-      <Typography sx={{ textAlign: 'left', fontSize: '12px' }}>
+      <Typography sx={{ textAlign: 'left', fontSize: {xs:'12px',md:'14px'},fontFamily:theme.typography.fontFamilySecondary, }}>
         COPYRIGHT © Veridian (Gibraltar) Limited 2024. All rights reserved. Any and all content included on this website or incorporated by reference is protected by international copyright laws.
       </Typography>
       <Typography
       onClick={() => navigate('/policy')}       
       sx={{
-          fontSize: '12px',
+          fontSize: {xs:'12px',md:'14px'},
+          fontFamily:theme.typography.fontFamilySecondary,
           textAlign: 'left', // Ensure left alignment for xs
           whiteSpace: 'nowrap',
           cursor: 'pointer',

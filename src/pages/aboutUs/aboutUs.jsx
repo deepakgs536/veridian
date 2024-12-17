@@ -33,7 +33,7 @@ function AboutUs() {
       Header : 'Integrity',
       Icon: IntegrityIcon,
       Message:
-        'We operate with honesty and uphold the highest ethical standards. Integrity is the cornerstone of our business, guiding our actions and decisions to earn the trust of our clients and partners.',
+'We operate with honesty and uphold the highest ethical standards. Integrity is the cornerstone of our business, guiding our actions and decisions to earn the trust of our clients and partners.',
     },
   ];
 
@@ -43,10 +43,10 @@ function AboutUs() {
   return (
     <Stack direction="column" sx={{ width: '100%', margin: 'auto' }}>
       {/* Top Section */}
-      <Stack direction={{ xs: 'column', md: 'row' }} spacing={3} sx={{ marginBottom: '20px',backgroundColor:theme.palette.background.white ,padding:{xs:'5%',md:'3%'} ,zIndex:10}}>
+      <Stack direction={{ xs: 'column', md: 'row' }} spacing={3} sx={Styles.gridLayout}>
         {/* Left Image */}
         <Box sx={{ flex: 1 }}>
-          <img src={VeridianImage} alt="Veridian" style={{ width: '100%',height:'100%', aspectRatio:'16/9' , borderRadius: '8px' }} />
+          <img src={VeridianImage} alt="Veridian" style={Styles.imgStyle} />
         </Box>
 
         {/* Right Text */}

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, useMediaQuery, useTheme } from '@mui/material';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 import InvestmentApproachCard from '../../components/investmentApproachCard';
 import FocusAndStrategyImage from '../../assets/focusAndStrategyImage.jpg';
 import PortfolioImage from '../../assets/portfolioImage.jpg';
@@ -7,6 +9,7 @@ import CorporateSocialResponsibility from '../../assets/corporateSocialResponsib
 
 function HolisticInvestmentApproach() {
   const theme = useTheme();
+  const isMd = useMediaQuery(theme.breakpoints.up('md')); // Determine screen size
   const details = [
     {
       Image: FocusAndStrategyImage,
@@ -28,18 +31,7 @@ function HolisticInvestmentApproach() {
     }
   ];
 
-  const isMd = useMediaQuery(theme.breakpoints.up('md'));
-
-  // Set items per page based on screen size
-  const itemsPerPage = isMd ? 3 : 1;
-
-  // State for pagination
-  const [currentPage, setCurrentPage] = useState(0); // Start from first page (0 index)
-
-  // Calculate the index range for the current page
-  const indexOfLastItem = (currentPage + 1) * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = details.slice(indexOfFirstItem, indexOfLastItem);
+  const [currentPage, setCurrentPage] = useState(0);
 
   const handlePageChange = (index) => {
     setCurrentPage(index);
@@ -47,55 +39,78 @@ function HolisticInvestmentApproach() {
 
   return (
     <Box>
-      {/* Grid for Cards */}
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' }, // 1 column for xs and 3 columns for md+
-          gap: '20px',
-          width: '100%',
-          paddingBottom:'3%',
-        }}
-      >
-        {currentItems.map((detail, index) => (
-          <InvestmentApproachCard
-            key={index}
-            InvestmentImage={detail.Image}
-            Header={detail.Header}
-            ParaOne={detail.ParaOne}
-            ParaTwo={detail.ParaTwo}
-          />
-        ))}
-      </Box>
+      {/* Swiper for xs screens */}
+      {!isMd && (
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={20}
+          onSlideChange={(swiper) => handlePageChange(swiper.activeIndex)}
+        >
+          {details.map((detail, index) => (
+            <SwiperSlide key={index}>
+              <InvestmentApproachCard
+                InvestmentImage={detail.Image}
+                Header={detail.Header}
+                ParaOne={detail.ParaOne}
+                ParaTwo={detail.ParaTwo}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
 
-      {/* Custom Pagination (Dots) */}
-      <Box 
-        sx={{ 
-          display: { xs: 'flex', md: 'none' }, // Hide dots on md screens and above
-          justifyContent: 'center', 
-          marginTop: '20px' 
-        }}
-      >
-        {/* Loop to generate dot buttons */}
-        {Array.from({ length: Math.ceil(details.length / itemsPerPage) }).map((_, index) => (
-          <Box
-            key={index}
-            sx={{
-              width: currentPage === index ? '35px' : '12px', // Increase width when selected
-              height: '12px',
-              borderRadius: currentPage === index ? '100px' : '50%', 
-              backgroundColor: currentPage === index ? '#dfd328' : '#006547', // Green if active, gray if inactive
-              margin: '0 5px',
-              cursor: 'pointer',
-              transition: 'width 0.3s ease, background-color 0.3s ease', // Smooth transition for width and color
-              '&:hover': {
-                backgroundColor: theme.palette.secondary.main , // Darker on hover
-              },
-            }}
-            onClick={() => handlePageChange(index)} // Change page on dot click
-          />
-        ))}
-      </Box>
+      {/* Grid for md and larger screens */}
+      {isMd && (
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr 1fr', // 3 columns for md+ screens
+            gap: '20px',
+            width: '100%',
+            paddingBottom: '3%',
+          }}
+        >
+          {details.map((detail, index) => (
+            <InvestmentApproachCard
+              key={index}
+              InvestmentImage={detail.Image}
+              Header={detail.Header}
+              ParaOne={detail.ParaOne}
+              ParaTwo={detail.ParaTwo}
+            />
+          ))}
+        </Box>
+      )}
+
+      {/* Custom Pagination for xs */}
+      {!isMd && (
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '20px',
+          }}
+        >
+          {Array.from({ length: details.length }).map((_, index) => (
+            <Box
+              key={index}
+              sx={{
+                width: currentPage === index ? '35px' : '12px',
+                height: '12px',
+                borderRadius: currentPage === index ? '100px' : '50%',
+                backgroundColor: currentPage === index ? '#dfd328' : '#006547',
+                margin: '0 5px',
+                cursor: 'pointer',
+                transition: 'width 0.3s ease, background-color 0.3s ease',
+                '&:hover': {
+                  backgroundColor: theme.palette.secondary.main,
+                },
+              }}
+              onClick={() => handlePageChange(index)}
+            />
+          ))}
+        </Box>
+      )}
     </Box>
   );
 }

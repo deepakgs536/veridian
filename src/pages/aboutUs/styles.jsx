@@ -20,6 +20,18 @@ const useStyles = () => {
       },
       
     },
+    imgStyle : { 
+      width: '100%',
+      height:'100%', 
+      aspectRatio:'16/9', 
+    },
+    gridLayout : { 
+      marginBottom: '20px',
+      backgroundColor:theme.palette.background.white ,
+      padding:{xs:'5%',md:'3%'} ,
+      zIndex:10
+    },
+    
   };
 };
 

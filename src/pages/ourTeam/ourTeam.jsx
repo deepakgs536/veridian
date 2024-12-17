@@ -1,30 +1,28 @@
 import React, { useRef, useState, useEffect } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-// Import required modules
-import { Pagination } from 'swiper/modules';
 import { alpha } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import OurTeamCard from '../../components/ourTeamCard';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-
 import TeamMember1 from '../../assets/teamMember1.svg';
 import TeamMember2 from '../../assets/teamMember2.svg';
 import TeamMember3 from '../../assets/teamMember3.svg';
 import { useTheme } from '@emotion/react';
+import useStyles from './styles';
 
 function OurTeam() {
   const swiperRef = useRef(null); // Create a ref for Swiper instance
-  const [currentPage, setCurrentPage] = useState(0); // Track the current active page
-  const [maxHeight, setMaxHeight] = useState(0); // State for max height
-  const paragraphRefs = useRef([]); // Refs to paragraph sections
   const theme = useTheme();
+  const Styles = useStyles();
+  const [currentPage, setCurrentPage] = useState(0); 
+  const [maxHeight, setMaxHeight] = useState(0); 
+  const paragraphRefs = useRef([]); // Refs to paragraph sections
+
   const teamMemberDetail = [
     {
       Name: 'Julian Jarvis',
@@ -48,27 +46,6 @@ function OurTeam() {
       Image: TeamMember3,
     },
   ];
-
-  const buttonStyles = {
-    position: 'absolute',
-    top: '50%',
-    zIndex: 10,
-    transform: 'translateY(-50%)',
-    backgroundColor: theme.palette.primary.dark,
-    borderRadius: '50%',
-    width: '50px',
-    height: '50px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    cursor: 'pointer',
-    color: theme.palette.background.white,
-    fontSize: '18px',
-    transition: 'background-color 0.3s ease',
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.primary.dark,0.9), // Slightly darker grey on hover
-    },
-  };
 
   const handleSlideChange = (swiper) => {
     setCurrentPage(swiper.realIndex); // Update current page when slide changes
@@ -94,10 +71,10 @@ function OurTeam() {
   return (
     <Box sx={{ position: 'relative' }}>
       <Swiper
-        ref={swiperRef} // Pass the ref to access the Swiper instance
+        ref={swiperRef} 
         loop={true}
-        speed={700} // Set transition speed (700ms for smooth movement)
-        spaceBetween={20}
+        speed={700}
+        spaceBetween={40}
         pagination={{ clickable: true }}
         className="mySwiper"
         breakpoints={{
@@ -105,7 +82,8 @@ function OurTeam() {
             slidesPerView: 1, // 1 slide per view for xs screens
           },
           600: {
-            slidesPerView: 1.15, // Slightly more than 1 slide on small screens
+            slidesPerView: 1.2, // Slightly more than 1 slide on small screens
+            centeredSlides: false,
           },
         }}
         onSlideChange={handleSlideChange} // Update active slide when the slide changes
@@ -129,22 +107,22 @@ function OurTeam() {
       <Box
         onClick={() => swiperRef.current.swiper.slidePrev()} // Trigger previous slide
         sx={{
-          ...buttonStyles,
+          ...Styles.buttonStyles,
           left: '18px',
           display: { xs: 'none', sm: 'flex' }, // Hide on xs screens
         }}
       >
-        <ArrowBackIcon /> {/* Left Arrow */}
+        <ArrowBackIcon /> 
       </Box>
       <Box
         onClick={() => swiperRef.current.swiper.slideNext()} // Trigger next slide
         sx={{
-          ...buttonStyles,
+          ...Styles.buttonStyles,
           right: '18px',
           display: { xs: 'none', sm: 'flex' }, // Hide on xs screens
         }}
       >
-        <ArrowForwardIcon /> {/* Right Arrow */}
+        <ArrowForwardIcon /> 
       </Box>
 
       {/* Dots for small screens (when arrows are hidden) */}

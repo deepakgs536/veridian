@@ -21,7 +21,7 @@ function OurTeamCard({ TeamMemberName, Info1 , Info2, Image, Designation,paraRef
         minHeight: { xs: 'auto', md: '400px' },
         transform: {
           xs: 'skew(0deg)', // For small screens
-          md: 'skew(-20deg)', // For medium screens and above
+          md: 'translateX(9%) skew(-20deg)', // For medium screens and above
         },
       }}
     >

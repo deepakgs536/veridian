@@ -3,6 +3,7 @@ import { createTheme } from "@mui/material";
 // import '@fontsource/poppins/600.css';
 const lightTheme = createTheme({
     typography: {
+      fontWeight:400,
       fontFamily: "IBM Plex",
       fontFamilySecondary: "DM Sans",
       // fontSize: 12.25, //Don't Change this, as it have the default font size as 14 or 0.875rem by default

@@ -16,15 +16,16 @@
   import OurTeam from '../ourTeam/ourTeam';
   import Footer from '../footer/footer';
   import { useTheme } from '@emotion/react';
-  import Styles from './styles';
   import { useLocation, useNavigate } from 'react-router-dom';
+  import useStyles from './styles';
 
 
   function Navbar() {
     const theme = useTheme();
+    const Styles = useStyles();
     const navigate = useNavigate();
     const location = useLocation();
-    const [currentTab, setCurrentTab] = React.useState('');
+    const [currentTab, setCurrentTab] = React.useState('home');
     const [drawerOpen, setDrawerOpen] = React.useState(false);
 
     const handleChange = (event, newValue) => {
@@ -65,13 +66,7 @@
       <Box sx={Styles.contentSection}>
 
         <AppBar 
-        sx={{ 
-          backgroundColor: theme.palette.background.white, 
-          boxShadow: 0,
-          position:"sticky" ,
-          top: 0, // Ensures stickiness starts at the top
-          zIndex: 1100, // Ensure it appears above other elements
-          }}>
+        sx={Styles.appBar}>
           <Toolbar sx={{ padding: 0 ,position:"sticky"}}>
             <Box sx={{ flex: 1, textAlign: 'left' }}>
               <img
@@ -87,23 +82,7 @@
                 <TabList
                   onChange={handleChange}
                   aria-label="navbar tabs"
-                  sx={{
-                    position: 'sticky', // Sticky tabs
-                    top: 0,
-                    zIndex: 1100,
-                    backgroundColor: theme.palette.background.white,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    '& .MuiTab-root': {
-                      outline: 'none',
-                      fontSize: '20px',
-                      fontWeight:500,
-                      paddingX: '15px',
-                      textTransform: 'none',
-                    },
-                    '& .MuiTab-root.Mui-selected': { color: theme.palette.primary.main },
-                    '& .MuiTabs-indicator': { backgroundColor: theme.palette.primary.main, height: '4px' },
-                  }}
+                  sx={Styles.tabListMd}
                   >
                   <Tab label="Home" value="home" />
                   <Tab label="About Us" value="aboutUs" />
@@ -129,18 +108,11 @@
           open={drawerOpen}
           onClick={toggleDrawer(!drawerOpen)}
           PaperProps={{
-            sx: { width: '100%', height: 'max-content' }, // or use height = 100% full occupy fully
+            sx: { width: '100%', height: 'max-content' },
           }}
         >
           <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              padding: '0px',
-              borderBottom: `1px solid ${theme.palette.text.line2}`,
-              backgroundColor: 'transparent',
-            }}
+            sx={Styles.drawerContainer}
           >
             <img
               src={VeridianLogo}
@@ -149,13 +121,7 @@
             />
             <IconButton
               onClick={toggleDrawer(!drawerOpen)}
-              sx={{
-                color: theme.palette.background.black,
-                outline: 'none',
-                border: 'none',
-                '&:focus': { outline: 'none' },
-                '&:active': { outline: 'none' },
-              }}
+              sx={Styles.drawerIcon}
             >
               {drawerOpen ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
@@ -163,65 +129,28 @@
 
           {/* Tabs in Drawer */}
           <Box
-            sx={{
-              flexGrow: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'flex-start',
-              alignItems: 'center',
-              textAlign: 'center',
-              padding: '0px',
-              backgroundColor: theme.palette.background.white,
-            }}
+            sx={Styles.drawerTabs}
           >
             <TabContext value={currentTab}>
               <TabList
                 onChange={handleChange}
                 orientation="vertical"
                 aria-label="drawer tabs"
-                sx={{
-                  position: 'sticky', 
-                  top: 0,
-                  zIndex: 1100,
-                  backgroundColor: theme.palette.background.white,
-                  '& .MuiTab-root': {
-                    textAlign: 'center',
-                    padding: '12px 24px',
-                    fontSize: '18px',
-                    fontWeight:500,
-                    textTransform: 'none',
-                    justifyContent: 'center',
-                  },
-                  '& .MuiTab-root.Mui-selected': { color: theme.palette.primary.main },
-                  '& .MuiTabs-indicator': { display: 'none' },
-                }}
+                sx={Styles.tabListXs}
               >
-                <Tab label="Home" value="home" />
-                <Tab label="About Us" value="aboutUs" />
-                <Tab label="Our Team" value="ourTeam" />
-                <Tab label="Investment Approach" value="investmentApproach" />
-                <Tab label="Contact Us" value="contactUs" />
+                <Tab sx={Styles.alignTabs} label="Home" value="home" disableRipple/>
+                <Tab sx={Styles.alignTabs} label="About Us" value="aboutUs" disableRipple/>
+                <Tab sx={Styles.alignTabs} label="Our Team" value="ourTeam" disableRipple/>
+                <Tab sx={Styles.alignTabs} label="Investment Approach" value="investmentApproach" disableRipple/>
+                <Tab sx={Styles.alignTabs} label="Contact Us" value="contactUs" disableRipple/>
               </TabList>
             </TabContext>
           </Box>
         </Drawer>
 
         {/* Page Sections */}
-        
-
           <Box id="home">
-            <Box
-              sx={{
-                position: 'relative',
-                width: '100%',
-                height: { xs: '60vh', md: '60vh' },
-                backgroundColor: theme.palette.primary.main, 
-                overflow: 'hidden',
-                marginY:{xs:'0',md:'auto'},
-                display:'flex',
-                alignItems:'center',
-              }}
-            >
+            <Box sx={Styles.home}>
               <Shadow top={-50} left={0} />
               <Shadow bottom={-60} right={0} />
               <Shadow top={-50} right={0} />
@@ -238,8 +167,8 @@
               <Shadow top={'-15%'} right={0} shadowRotate={'rotate(135deg)'} shadowColor ={alpha('#C0E3DB', 1)} fadeColor = {alpha('#C0E3DB', 0)}/>
               <Shadow bottom={'20%'} left={0} shadowRotate={'rotate(225deg)'} shadowColor ={alpha('#C0E3DB', 1)} fadeColor = {alpha('#C0E3DB', 0)}/>
               <Box id="aboutUs" sx={{paddingX:{xs:'4%',md:'8%'}}}>
-              <Typography sx={Styles.headerStyle}>About Us</Typography>
-              <AboutUs />
+                <Typography sx={Styles.headerStyle}>About Us</Typography>
+                <AboutUs />
               </Box>
             <Stack id="ourTeam" >
               <Typography sx={Styles.headerStyle}>Our Team</Typography>
@@ -255,14 +184,13 @@
           </Box>
           <Divider 
           sx={{
-            paddingY:'10px',width:'100%',marginY:'20px',
+            paddingY:{xs:0,md:'10px'},width:'100%',marginY:{xs:0,md:'15px'},
             }}/>
           <Box>
           <Footer/>
           </Box>
 
       </Box>
-
       </Box>
         
     );

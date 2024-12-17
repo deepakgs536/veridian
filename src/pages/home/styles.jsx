@@ -11,7 +11,7 @@ const useStyles = () => {
         letterSpacing: '0.1em', 
         alignItems:'center',
         backgroundColor: '#f9c300', // Corrected property name
-        paddingX:'5px',
+        padding:'4px 12px',
         '@media (max-width: 600px)': { // Styles for mobile view
             fontSize: "12px", // Smaller font for mobile screens
         },
@@ -47,8 +47,8 @@ const useStyles = () => {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#006547",
-        padding: "16px 24px",
-        borderRadius: "4px",
+        padding: "16px 32px",
+        borderRadius: "2px",
         cursor: "pointer",
         color:'#FFFFFF',
         fontSize:'18px',

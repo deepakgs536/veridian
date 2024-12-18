@@ -174,7 +174,7 @@
               <Typography sx={Styles.headerStyle}>Our Team</Typography>
               <OurTeam />
             </Stack>
-            <Box id="investmentApproach" sx={{ paddingBottom: '20px',px:{xs:2,md:5} }}>
+            <Box id="investmentApproach" sx={{ paddingBottom: '20px',paddingX:{xs:'4%',md:'8%'} }}>
             <Typography sx={Styles.headerStyle}>Holistic Investment Approach</Typography>
               <HolisticInvestmentApproach />
             </Box>

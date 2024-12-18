@@ -69,7 +69,7 @@ function OurTeam() {
   }, []); // Run only once after mount, or any changes in dependencies (here it's empty)
 
   return (
-    <Box sx={{ position: 'relative' }}>
+    <Box sx={{ position: 'relative',paddingX:{xs:'4%'} }}>
       <Swiper
         ref={swiperRef} 
         loop={true}

@@ -23,6 +23,7 @@ const useStyles = () => {
     footerContainer : {
         width: '100%',
         marginY: '10px',
+        paddingX:{xs:'4%'},
         textAlign: 'start',
         color: theme.palette.text.tertiary,
         alignItems: { xs: 'flex-start', md: 'center' }, // Align items vertically in the center for md

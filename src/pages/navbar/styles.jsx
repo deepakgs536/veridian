@@ -6,7 +6,7 @@ const useStyles = () => {
   return {
     mainContainer : {
         width: '98.72vw',  // Width 98.8% of the viewport width
-        paddingX: '5%',  // Horizontal padding
+        paddingX: {xs:0,md:'5%'},  // Horizontal padding
         display:'flex',
         flexDirection: 'column', // Arrange children vertically
         alignItems: 'center', // Center content horizontally
@@ -53,8 +53,11 @@ const useStyles = () => {
           outline: 'none',
           fontSize: '18px',
           fontWeight:500,
-          marginX: '5px',
           textTransform: 'none',
+          padding: '0',
+          marginX: 2, // Remove margin between tabs
+          minWidth: 'auto', // Allow tabs to adjust to content
+          width: 'auto', // Ensure width is based on label content
         },
         '& .MuiTab-root.Mui-selected': { color: theme.palette.primary.main },
         '& .MuiTabs-indicator': {
